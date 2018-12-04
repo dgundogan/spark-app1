@@ -14,6 +14,11 @@ object WordCount {
     val lines = sc.textFile("in/world_count.text")
     val words = lines.flatMap(line => line.split(" "))
 
+    val cleanedLines = lines.filter(line => !line.isEmpty)
+    val lengths = lines.map(line => line.length)
+
+    println("lengths:" + lengths)
+
     val wordCount = words.countByValue()
     for((word, count) <- wordCount) println(word + ":" + count)
   }
